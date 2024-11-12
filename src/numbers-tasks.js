@@ -49,15 +49,13 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  // const sum = value1 + value2;
-  // if (Math.abs(sum) > Number.MAX_VALUE) {
-  //   return Infinity;
-  // }
+function getAverage(value1, value2) {
+  const sum = value1 + value2;
+  if (sum === Infinity || sum === -Infinity) {
+    return Number.MAX_VALUE;
+  }
 
-  // return sum / 2;
-
-  throw new Error('Not implemented');
+  return sum / 2;
 }
 
 /**
@@ -454,8 +452,8 @@ function isNumber(value) {
  * 5.1  => false
  * '5'  => false
 ---------------------------------------------------------*/
-function isInteger(/* number */) {
-  throw new Error('Not implemented');
+function isInteger(number) {
+  return Number.isInteger(number);
 }
 
 /**--------------------------------------------
@@ -468,8 +466,8 @@ function isInteger(/* number */) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
 -------------------------------------*/
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  return Number.parseFloat(str);
 }
 
 /**----------------------------------
@@ -486,8 +484,9 @@ function getFloatOnString(/* str */) {
  * '1.234', 2           => 1
  * '10', 8              => 8
 ---------------------------------*/
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  const result = Number.parseInt(str, base);
+  return Number.isNaN(result) ? NaN : result;
 }
 
 /**
